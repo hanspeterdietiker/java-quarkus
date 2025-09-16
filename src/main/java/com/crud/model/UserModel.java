@@ -1,6 +1,7 @@
 package com.crud.model;
 
 
+import com.crud.model.enums.UserCountStatus;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 
@@ -17,4 +18,6 @@ public class UserModel extends PanacheEntityBase {
     public String username;
 
     public String password;
+
+    public UserCountStatus status;
 }
