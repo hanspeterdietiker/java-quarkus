@@ -1,6 +1,6 @@
 package com.crud.model.enums;
 
-public enum UserCountStatus {
+public enum UserAccountStatus {
     Active,
     Inactive
 }

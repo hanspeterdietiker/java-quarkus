@@ -1,7 +1,7 @@
 package com.crud.model;
 
 
-import com.crud.model.enums.UserCountStatus;
+import com.crud.model.enums.UserAccountStatus;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 
@@ -11,13 +11,51 @@ import java.util.UUID;
 @Table(name = "tb_users")
 public class UserModel extends PanacheEntityBase {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     public UUID userId;
+
 
     public String username;
 
     public String password;
 
-    public UserCountStatus status;
+    public UserAccountStatus status;
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
+
+    public UserAccountStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(UserAccountStatus status) {
+        this.status = status;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public UserModel() {
+        this.status = UserAccountStatus.Active;
+    }
 }
