@@ -21,6 +21,7 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
     @GET
     public List<UserModel> getAllUsers() {
         return userService.getAllUsers();
@@ -33,11 +34,18 @@ public class UserController {
     }
 
 
-
     @POST
     @Transactional
     public Response createUser(UserModel userModel) {
         return Response.ok(userService.createUser(userModel)).build();
+
+    }
+
+    @PUT
+    @Path("{id}")
+    @Transactional
+    public Response updateUser(@PathParam("id") UUID userId, UserModel userModel) {
+        return Response.ok(userService.updateUser(userId, userModel)).build();
 
     }
 }
