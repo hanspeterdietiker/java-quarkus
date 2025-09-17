@@ -1,6 +1,7 @@
 package com.crud.controller;
 
 
+import com.crud.dto.user.PutUserRequest;
 import com.crud.model.UserModel;
 import com.crud.services.UserService;
 import jakarta.transaction.Transactional;
@@ -44,8 +45,8 @@ public class UserController {
     @PUT
     @Path("/{id}")
     @Transactional
-    public Response updateUser(@PathParam("id") UUID userId, UserModel userModel) {
-        return Response.ok(userService.updateUser(userId, userModel)).build();
+    public Response updateUser(@PathParam("id") UUID userId, PutUserRequest userDto) {
+        return Response.ok(userService.updateUser(userId, userDto)).build();
 
     }
 
