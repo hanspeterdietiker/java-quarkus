@@ -2,6 +2,7 @@ package com.crud.services;
 
 import com.crud.model.UserModel;
 import com.crud.model.enums.UserAccountStatus;
+import com.crud.model.enums.UserRole;
 import io.quarkus.elytron.security.common.BcryptUtil;
 import jakarta.enterprise.context.ApplicationScoped;
 import com.crud.exception.EntityNotFoundException;
@@ -15,6 +16,7 @@ public class UserService {
         var user = new UserModel();
         user.username = userModel.username;
         user.password = BcryptUtil.bcryptHash(userModel.password);
+        user.role = userModel.role;
         user.status = userModel.status;
 
         UserModel.persist(user);
@@ -35,6 +37,7 @@ public class UserService {
 
         user.username = userModel.username;
         user.password = BcryptUtil.bcryptHash(userModel.password);
+        user.role = userModel.role;
 
         UserModel.persist(user);
         return user;

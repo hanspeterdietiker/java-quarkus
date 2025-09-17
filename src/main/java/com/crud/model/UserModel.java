@@ -2,6 +2,7 @@ package com.crud.model;
 
 
 import com.crud.model.enums.UserAccountStatus;
+import com.crud.model.enums.UserRole;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 
@@ -22,6 +23,17 @@ public class UserModel extends PanacheEntityBase {
     public String password;
 
     public UserAccountStatus status;
+
+    public UserRole role;
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
 
     public UUID getUserId() {
         return userId;
@@ -57,5 +69,6 @@ public class UserModel extends PanacheEntityBase {
 
     public UserModel() {
         this.status = UserAccountStatus.Active;
+        this.role = UserRole.NoRole;
     }
 }
