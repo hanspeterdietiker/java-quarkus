@@ -15,7 +15,7 @@ public class UserService {
         var user = new UserModel();
         user.username = userModel.username;
         user.password = BcryptUtil.bcryptHash(userModel.password);
-        user.status = UserAccountStatus.Active;
+        user.status = userModel.status;
 
         UserModel.persist(user);
         return user;
