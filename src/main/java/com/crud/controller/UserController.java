@@ -48,4 +48,11 @@ public class UserController {
         return Response.ok(userService.updateUser(userId, userModel)).build();
 
     }
+
+    @DELETE
+    @Path("{id}")
+    @Transactional
+    public Response deleteUser(@PathParam("id") UUID userId) {
+        return Response.ok(userService.deleteUserById(userId)).build();
+    }
 }

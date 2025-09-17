@@ -1,6 +1,7 @@
 package com.crud.services;
 
 import com.crud.model.UserModel;
+import com.crud.model.enums.UserAccountStatus;
 import jakarta.enterprise.context.ApplicationScoped;
 import com.crud.exception.EntityNotFoundException;
 
@@ -29,6 +30,15 @@ public class UserService {
 
         user.username = userModel.username;
         user.password = userModel.password;
+
+        UserModel.persist(user);
+        return user;
+    }
+
+    public UserModel deleteUserById(UUID userId) {
+        var user = getUserById(userId);
+
+        user.status = UserAccountStatus.Inactive;
 
         UserModel.persist(user);
         return user;
