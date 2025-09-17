@@ -35,12 +35,6 @@ public class UserController {
     }
 
 
-    @POST
-    @Transactional
-    public Response createUser(UserModel userModel) {
-        return Response.ok(userService.createUser(userModel)).build();
-
-    }
 
     @PUT
     @Path("/{id}")

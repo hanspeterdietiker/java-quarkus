@@ -12,17 +12,6 @@ import java.util.UUID;
 @ApplicationScoped
 public class UserService {
 
-    public UserModel createUser(UserModel userModel) {
-        var user = new UserModel();
-        user.username = userModel.username;
-        user.password = BcryptUtil.bcryptHash(userModel.password);
-        user.role = userModel.role;
-        user.status = userModel.status;
-
-        UserModel.persist(user);
-        return user;
-    }
-
     public List<UserModel> getAllUsers() {
         return UserModel.listAll();
     }
