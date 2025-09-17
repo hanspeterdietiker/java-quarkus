@@ -42,7 +42,7 @@ public class UserController {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Transactional
     public Response updateUser(@PathParam("id") UUID userId, UserModel userModel) {
         return Response.ok(userService.updateUser(userId, userModel)).build();
@@ -50,7 +50,7 @@ public class UserController {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @Transactional
     public Response deleteUser(@PathParam("id") UUID userId) {
         return Response.ok(userService.deleteUserById(userId)).build();

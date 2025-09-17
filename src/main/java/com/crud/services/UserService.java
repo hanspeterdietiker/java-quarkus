@@ -2,9 +2,9 @@ package com.crud.services;
 
 import com.crud.model.UserModel;
 import com.crud.model.enums.UserAccountStatus;
+import io.quarkus.elytron.security.common.BcryptUtil;
 import jakarta.enterprise.context.ApplicationScoped;
 import com.crud.exception.EntityNotFoundException;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -12,8 +12,13 @@ import java.util.UUID;
 public class UserService {
 
     public UserModel createUser(UserModel userModel) {
-        UserModel.persist(userModel);
-        return userModel;
+        var user = new UserModel();
+        user.username = userModel.username;
+        user.password = BcryptUtil.bcryptHash(userModel.password);
+        user.status = UserAccountStatus.Active;
+
+        UserModel.persist(user);
+        return user;
     }
 
     public List<UserModel> getAllUsers() {
@@ -29,7 +34,7 @@ public class UserService {
         var user = getUserById(userId);
 
         user.username = userModel.username;
-        user.password = userModel.password;
+        user.password = BcryptUtil.bcryptHash(userModel.password);
 
         UserModel.persist(user);
         return user;
