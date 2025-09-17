@@ -5,7 +5,7 @@ import com.crud.model.UserModel;
 import com.crud.model.enums.UserAccountStatus;
 import io.quarkus.elytron.security.common.BcryptUtil;
 import jakarta.enterprise.context.ApplicationScoped;
-import com.crud.exception.EntityNotFoundException;
+import com.crud.exception.DataException.EntityNotFoundException;
 import java.util.List;
 import java.util.UUID;
 
@@ -35,7 +35,7 @@ public class UserService {
     public UserModel deleteUserById(UUID userId) {
         var user = getUserById(userId);
 
-        user.status = UserAccountStatus.Inactive;
+        user.status = UserAccountStatus.inactive;
 
         UserModel.persist(user);
         return user;

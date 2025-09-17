@@ -4,6 +4,8 @@ package com.crud.controller;
 import com.crud.dto.user.PutUserRequest;
 import com.crud.model.UserModel;
 import com.crud.services.UserService;
+import io.quarkus.security.Authenticated;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -24,6 +26,7 @@ public class UserController {
     }
 
     @GET
+    @Authenticated
     public List<UserModel> getAllUsers() {
         return userService.getAllUsers();
     }
@@ -35,10 +38,10 @@ public class UserController {
     }
 
 
-
     @PUT
     @Path("/{id}")
     @Transactional
+    @Authenticated
     public Response updateUser(@PathParam("id") UUID userId, PutUserRequest userDto) {
         return Response.ok(userService.updateUser(userId, userDto)).build();
 

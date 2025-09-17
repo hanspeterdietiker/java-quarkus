@@ -1,4 +1,4 @@
-package com.crud.exception;
+package com.crud.exception.DataException;
 
 public class EntityNotFoundException extends RuntimeException {
 }

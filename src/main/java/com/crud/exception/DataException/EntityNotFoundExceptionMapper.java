@@ -1,4 +1,4 @@
-package com.crud.exception;
+package com.crud.exception.DataException;
 
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;

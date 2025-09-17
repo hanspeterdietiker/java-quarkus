@@ -1,8 +1,8 @@
 package com.crud.model.enums;
 
 public enum UserRole {
-    NoRole,
-    Teacher,
-    Student,
-    Admin
+    user,
+    teacher,
+    student,
+    admin
 }
