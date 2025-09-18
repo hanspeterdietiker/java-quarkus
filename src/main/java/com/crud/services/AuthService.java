@@ -2,6 +2,9 @@ package com.crud.services;
 
 import com.crud.exception.AuthException.CredentialsException;
 import com.crud.model.UserModel;
+import com.crud.model.enums.UserAccountStatus;
+import com.crud.model.enums.UserRole;
+
 import io.quarkus.elytron.security.common.BcryptUtil;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -20,8 +23,8 @@ public class AuthService {
         var user = new UserModel();
         user.username = userModel.username;
         user.password = BcryptUtil.bcryptHash(userModel.password);
-        user.role = userModel.role;
-        user.status = userModel.status;
+        user.role = UserRole.USER;
+        user.status = UserAccountStatus.ACTIVE;
 
         UserModel.persist(user);
         return user;
