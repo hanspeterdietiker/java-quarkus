@@ -12,9 +12,7 @@ import java.util.UUID;
 @ApplicationScoped
 public class UserService {
 
-    public List<UserModel> getAllUsers() {
-        return UserModel.listAll();
-    }
+
 
     public UserModel getUserById(UUID userId) {
         return (UserModel) UserModel.findByIdOptional(userId)
@@ -35,7 +33,7 @@ public class UserService {
     public UserModel deleteUserById(UUID userId) {
         var user = getUserById(userId);
 
-        user.status = UserAccountStatus.inactive;
+        user.status = UserAccountStatus.INACTIVE;
 
         UserModel.persist(user);
         return user;

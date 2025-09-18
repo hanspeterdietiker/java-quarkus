@@ -5,7 +5,6 @@ import com.crud.dto.user.PutUserRequest;
 import com.crud.model.UserModel;
 import com.crud.services.UserService;
 import io.quarkus.security.Authenticated;
-import jakarta.annotation.security.RolesAllowed;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -26,13 +25,8 @@ public class UserController {
     }
 
     @GET
-    @Authenticated
-    public List<UserModel> getAllUsers() {
-        return userService.getAllUsers();
-    }
-
-    @GET
     @Path("/{id}")
+    @Authenticated
     public Response getUserById(@PathParam("id") UUID userId) {
         return Response.ok(userService.getUserById(userId)).build();
     }
@@ -50,6 +44,7 @@ public class UserController {
     @DELETE
     @Path("/{id}")
     @Transactional
+    @Authenticated
     public Response deleteUser(@PathParam("id") UUID userId) {
         return Response.ok(userService.deleteUserById(userId)).build();
     }

@@ -67,10 +67,7 @@ public class UserModel extends PanacheEntityBase {
         this.username = username;
     }
 
-    public UserModel() {
-        this.status = UserAccountStatus.active;
-        this.role = UserRole.user;
-    }
+
 
     public static UserModel findByUsername(String username) {
         return find("username", username).firstResult();
